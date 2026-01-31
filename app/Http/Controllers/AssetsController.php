@@ -10,5 +10,6 @@ class AssetsController extends Controller
     {
         
         return view('assets.asset');
+        
     }
 }
