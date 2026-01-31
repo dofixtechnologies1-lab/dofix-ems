@@ -209,7 +209,7 @@ class UserManagementController extends Controller
             {
                 $image_name = $request->hidden_image;
                 $image = $request->file('images');
-                if ($image_name =='photo_defaults.jpg')
+                if ($image_name =='default-image.png')
                 {
                     if($image != '') {
                         $image_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -335,7 +335,7 @@ class UserManagementController extends Controller
             $image = $request->file('images');
             if ($image) {
                 // Delete old image if it's not the default
-                if ($image_name && $image_name !== 'photo_defaults.jpg') {
+                if ($image_name && $image_name !== 'default-image.png') {
                     $oldImagePath = public_path('assets/images/' . $image_name);
                     if (file_exists($oldImagePath)) {
                         unlink($oldImagePath);
@@ -421,7 +421,7 @@ class UserManagementController extends Controller
             $user->delete();
 
             // Delete the avatar if not default and file exists
-            if ($avatar !== 'photo_defaults.jpg') {
+            if ($avatar !== 'default-image.png') {
                 $avatarPath = public_path('assets/images/' . $avatar);
                 if (file_exists($avatarPath)) {
                     try {

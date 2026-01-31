@@ -9,7 +9,7 @@
 	<meta name="author" content="SoengSouy Admin Template">
 	<meta name="robots" content="noindex, nofollow">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>Dashboard - HRMS</title>
+	<title>Dofix Dashboard</title>
 	<!-- Favicon -->
 	<link rel="shortcut icon" type="image/x-icon" href="{{ URL::to('assets/img/favicon.png') }}">
 	<!-- Bootstrap CSS -->
@@ -58,7 +58,11 @@
 			<!-- Logo -->
 			<div class="header-left">
 				<a href="{{ route('home') }}" class="logo">
-					<img src="{{ URL::to('/assets/images/'. Auth::user()->avatar) }}" width="40" height="40" alt="">
+					<img src="{{ URL::to('/assets/images/'. Auth::user()->avatar) }}"
+                        width="40"
+                        height="40"
+                        class="rounded-circle"
+                        alt="Profile-image">
 				</a>
 			</div>
 			<!-- /Logo -->

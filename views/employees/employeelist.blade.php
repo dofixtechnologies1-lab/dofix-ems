@@ -152,6 +152,7 @@
                                     <div class="form-group">
                                         <label>Gender</label>
                                         <select class="select form-control" id="gender" name="gender">
+                                            <option selected disabled>-- Select --</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
@@ -165,7 +166,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label class="col-form-label">Line Manager</label>
+                                        <label class="col-form-label">Department Head</label>
                                         <select class="select" id="company" name="line_manager">
                                             <option selected disabled>-- Select --</option>
                                             @foreach ($userList as $key=>$user )

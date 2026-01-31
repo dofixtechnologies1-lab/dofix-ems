@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-form-label col-md-2">Line Manager</label>
+                                    <label class="col-form-label col-md-2">Department Head</label>
                                     <div class="col-md-10">
                                         <input type="text" class="form-control" id="line_manager" name="line_manager" value="{{ $employees[0]->line_manager }}">
                                     </div>

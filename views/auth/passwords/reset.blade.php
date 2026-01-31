@@ -6,7 +6,11 @@
             <div class="container">
                 <!-- Account Logo -->
                 <div class="account-logo">
-                    <a href="index.html"><img src="{{ URL::to('assets/img/logo2.png') }}" alt="SoengSouy"></a>
+                    <a href="index.html">
+                        <img src="{{ URL::to('assets/img/logo2.png') }}"
+                             alt="DoFix-logo"
+                             style="border-radius: 50%;">
+                    </a>
                 </div>
                       
                 <!-- /Account Logo -->

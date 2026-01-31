@@ -129,6 +129,7 @@
                                     <div class="form-group">
                                         <label>Gender</label>
                                         <select class="select form-control" style="width: 100%;" tabindex="-1" aria-hidden="true" id="gender" name="gender">
+                                            <option selected disabled>-- Select --</option>    
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                         </select>
@@ -142,7 +143,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label class="col-form-label">Line Manager</label>
+                                        <label class="col-form-label">Department Head</label>
                                         <select class="select select2s-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" id="line_manager" name="line_manager">
                                             <option selected disabled>-- Select --</option>
                                             @foreach ($userList as $key=>$user )

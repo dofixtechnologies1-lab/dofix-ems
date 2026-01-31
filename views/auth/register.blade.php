@@ -2,11 +2,15 @@
 @section('content')
     <div class="main-wrapper">
         <div class="account-content">
-            <a href="{{ route('form/job/list') }}" class="btn btn-primary apply-btn">Apply Job</a>
+            <!-- <a href="{{ route('form/job/list') }}" class="btn btn-primary apply-btn">Apply Job</a> -->
             <div class="container">
                 <!-- Account Logo -->
                 <div class="account-logo">
-                    <a href="index.html"><img src="{{ URL::to('assets/img/logo2.png') }}" alt="SoengSouy"></a>
+                    <a href="index.html">
+                        <img src="{{ URL::to('assets/img/logo2.png') }}"
+                             alt="DoFix-logo"
+                             style="border-radius: 50%;">
+                    </a>
                 </div>
                 <!-- /Account Logo -->
                 <div class="account-box">
@@ -36,7 +40,7 @@
                                 @enderror
                             </div>
                             {{-- insert defaults --}}
-                            <input type="hidden" class="image" name="image" value="photo_defaults.jpg">
+                            <input type="hidden" class="image" name="image" value="default-image.png">
                             <div class="form-group">
                                 <label class="col-form-label">Role Name</label>
                                 <select class="select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">

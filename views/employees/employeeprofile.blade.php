@@ -905,7 +905,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="profile-img-wrap edit-img">
+                                    <!-- <div class="profile-img-wrap edit-img">
                                         <img class="inline-block" src="{{ URL::to('/assets/images/'. $users->avatar) }}" alt="{{ $users->name }}">
                                         <div class="fileupload btn">
                                             <span class="btn-text">edit</span>
@@ -914,7 +914,33 @@
                                             <input type="hidden" name="hidden_image" id="e_image" value="{{ $users->avatar }}">
                                             @endif
                                         </div>
+                                    </div> -->
+                                    <div class="profile-img-wrap edit-img">
+                                        <img class="inline-block rounded-circle"
+                                             src="{{ URL::to('/assets/images/'. $users->avatar) }}"
+                                             alt="{{ Auth::user()->name }}"
+                                             width="120"
+                                             height="120">
+                                    
+                                        <div class="fileupload btn">
+                                            <span class="btn-text">Edit</span>
+                                    
+                                            <input class="upload"
+                                                   type="file"
+                                                   id="image"
+                                                   name="images"
+                                                   accept="image/*"
+                                                   capture="environment">
+                                    
+                                            @if(!empty($users))
+                                                <input type="hidden"
+                                                       name="hidden_image"
+                                                       id="e_image"
+                                                       value="{{ $users->avatar }}">
+                                            @endif
+                                        </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
