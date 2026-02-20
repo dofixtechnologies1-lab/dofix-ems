@@ -369,11 +369,14 @@ class EmployeeController extends Controller
                 ->where('users.user_id', $user_id);
         }
 
+
         // Usage:
         $user = getUserDetails($user_id)->get();   // For multiple results
         $users = getUserDetails($user_id)->first(); // For a single result
 
-        return view('employees.employeeprofile',compact('user','users'));
+        $bankDetails = DB::table('bank_information')->where('user_id', $user_id)->first();
+
+        return view('employees.employeeprofile',compact('user','users', 'bankDetails'));
     }
 
     /** Page Departments */

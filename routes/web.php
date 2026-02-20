@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\EmployeeProfileController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PartnerProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -186,7 +189,14 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
             });
             // ------------------------- Profile Employee --------------------------//
             Route::get('employee/profile/{user_id}', 'profileEmployee');
-        });
+            // Profile show
+            Route::get('/employee/profile/{id}', [EmployeeProfileController::class, 'show'])
+                ->name('employee.profile');
+            
+            // Bank update
+            Route::post('/employee/bank/update', [EmployeeProfileController::class, 'bankUpdate'])
+                ->name('employee.bank.update');
+                    });
     });
 
     // ------------------------- Form Holiday ---------------------------//
@@ -334,6 +344,82 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
     Route::controller(AssetsController::class)->group(function () {
         Route::middleware('auth')->group(function () {
             Route::get('assets/page', 'index')->name('assets/page');
+        });
+    });
+});
+// Route::post('bank/information/save', [EmployeeProfileController::class, 'bankInformationSave'])
+//     ->name('bank/information/save');
+
+// Route::post('employee/bank/save', [EmployeeProfileController::class, 'bankInformationSave'])
+//     ->name('employee.bank.save');
+
+
+ Route::controller(EmployeeController::class)->group(function () {
+        Route::middleware('auth')->group(function () {
+            // ---------------- Employee Management Routes ---------------------
+            Route::prefix('all/employee')->group(function () {
+                Route::get('/card', 'cardAllEmployee')->name('all/employee/card');
+                Route::get('/list', 'listAllEmployee')->name('all/employee/list');
+                Route::post('/save', 'saveRecord')->name('all/employee/save');
+                Route::get('/view/edit/{employee_id}', 'viewRecord');
+                Route::post('/update', 'updateRecord')->name('all/employee/update');
+                Route::get('/delete/{employee_id}', 'deleteRecord');
+                Route::post('/search', 'employeeSearch')->name('all/employee/search');
+                Route::post('/list/search', 'employeeListSearch')->name('all/employee/list/search');
+            });
+            Route::prefix('form')->group(function () {
+                // ----------------------- Departments -------------------------
+                Route::prefix('departments')->controller(EmployeeController::class)->group(function () {
+                    Route::get('/page', 'index')->name('form/departments/page');    
+                    Route::post('/save', 'saveRecordDepartment')->name('form/departments/save');    
+                    Route::post('/update', 'updateRecordDepartment')->name('form/department/update');    
+                    Route::post('/delete', 'deleteRecordDepartment')->name('form/department/delete');  
+                });
+                // ----------------------- Designations ------------------------
+                Route::prefix('designations')->group(function () {
+                    Route::get('/page', 'designationsIndex')->name('form/designations/page');    
+                    Route::post('/save', 'saveRecordDesignations')->name('form/designations/save');    
+                    Route::post('/update', 'updateRecordDesignations')->name('form/designations/update');    
+                    Route::post('/delete', 'deleteRecordDesignations')->name('form/designations/delete');
+                });
+                // ------------------------- Time Sheet -----------------------
+                Route::prefix('timesheet')->group(function () {
+                    Route::get('/page', 'timeSheetIndex')->name('form/timesheet/page');    
+                    Route::post('/save', 'saveRecordTimeSheets')->name('form/timesheet/save');    
+                    Route::post('/update', 'updateRecordTimeSheets')->name('form/timesheet/update');    
+                    Route::post('/delete', 'deleteRecordTimeSheets')->name('form/timesheet/delete');
+                });
+                // ------------------------ Over Time -------------------------
+                Route::prefix('overtime')->group(function () {
+                    Route::get('/page', 'overTimeIndex')->name('form/overtime/page');    
+                    Route::post('/save', 'saveRecordOverTime')->name('form/overtime/save');    
+                    Route::post('/update', 'updateRecordOverTime')->name('form/overtime/update');    
+                    Route::post('/delete', 'deleteRecordOverTime')->name('form/overtime/delete');  
+                });
+            });
+           
+            // Route::get('partner/profile/{user_id}', 'partnerEmployee');
+            // // Profile show
+            // Route::get('/partner/profile/{id}', [PartnerProfileController::class, 'show'])
+            //     ->name('partner.profile');
+            
+            // // Bank update
+            // Route::post('/partner/bank/update', [PartnerProfileController::class, 'bankUpdate'])
+            //     ->name('partner.bank.update');
+            //         });
+    });
+});
+
+Route::controller(PartnerProfileController::class)->group(function () {
+    Route::middleware('auth')->group(function () {
+        Route::prefix('all/partner')->group(function () {
+            Route::get('/list', 'listAllPartner')->name('all/partner/list');
+            // Route::post('/save', 'saveRecord')->name('all/partner/save');
+            // Route::get('/view/edit/{employee_id}', 'viewRecord');
+            // Route::post('/update', 'updateRecord')->name('all/partner/update');
+            // Route::get('/delete/{employee_id}', 'deleteRecord');
+            // Route::post('/search', 'employeeSearch')->name('all/employee/search');
+            // Route::post('/list/search', 'employeeListSearch')->name('all/employee/list/search');
         });
     });
 });
