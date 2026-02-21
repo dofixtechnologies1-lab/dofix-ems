@@ -11,5 +11,6 @@ class Holiday extends Model
     protected $fillable = [
         'name_holiday',
         'date_holiday',
+        'status'
     ];
 }

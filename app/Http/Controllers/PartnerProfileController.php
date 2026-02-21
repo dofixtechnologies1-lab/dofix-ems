@@ -25,35 +25,6 @@ class PartnerProfileController extends Controller
 
         return view('Partner.Partnerprofile', compact('Partner'));
     }
-
-    // 🔹 Store Family
-    // public function storeFamily(Request $request)
-    // {
-    //     $request->validate([
-    //         'employee_id' => 'required',
-    //         'name' => 'required',
-    //     ]);
-
-    //     EmployeeFamily::create([
-    //         'employee_id' => $request->employee_id,
-    //         'name' => $request->name,
-    //         'relationship' => $request->relationship,
-    //         'dob' => $request->dob,
-    //         'phone' => $request->phone,
-    //     ]);
-
-    //     return redirect()->back()->with('success', 'Family member added successfully');
-    // }
-
-    // 🔹 Delete Family
-    // public function deleteFamily($id)
-    // {
-    //     EmployeeFamily::findOrFail($id)->delete();
-
-    //     return redirect()->back()->with('success', 'Deleted successfully');
-    // }
-
-    // 🔹 Bank Update (FINAL WORKING)
     public function bankUpdatePartner(Request $request)
     {
         $request->validate([
@@ -66,8 +37,6 @@ class PartnerProfileController extends Controller
 
 
        $bankInformationPartner = BankInformationPartner::where('user_id', $request->user_id)->firstOrFail();
-        // print_r($bankInformation);
-        // die;
 
         $bankInformationPartner->update([
             'bank_name' => $request->bank_name,
@@ -76,12 +45,16 @@ class PartnerProfileController extends Controller
             'pan_no' => $request->pan_no,
         ]);
     
-
-        // dd("fiufiu");
         return redirect()->back()->with('success', "Partner's Bank details updated successfully");
-
-        // return redirect()->route('employee.profile', $bankInformation->user_id)
-        //     ->with('success', 'Bank details updated successfully');
     }
+    public function toggleStatus(Request $request)
+{
+    $holiday = Holiday::findOrFail($request->holiday_id);
+
+    $holiday->status = $holiday->status == 1 ? 0 : 1;
+    $holiday->save();
+
+    return redirect()->back();
+}
 }
 

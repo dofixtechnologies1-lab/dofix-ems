@@ -37,7 +37,7 @@
                                     <th>Partner Name</th>
                                     <th>Registration Date</th>
                                     <th hidden></th>
-                                    <th>Status</th>
+                                    <th>Payment Status</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
@@ -50,7 +50,14 @@
     <td class="holidayName">{{ $items->name_holiday }}</td>
     <td hidden class="holidayDate">{{ $items->date_holiday }}</td>
     <td>{{date('d F, Y',strtotime($items->date_holiday)) }}</td>
-    <td>{{date('l',strtotime($items->date_holiday)) }}</td>
+     
+    <!-- <td>{{date('l',strtotime($items->date_holiday)) }}</td> -->
+   <td>
+    <label class="switch">
+        <input type="checkbox" {{ $items->status == 1 ? 'checked' : '' }}>
+        <span class="slider"></span>
+    </label>
+</td>
     <td class="text-right">
         <div class="dropdown dropdown-action">
             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown">
@@ -75,9 +82,7 @@
                 </div>
             </div>
         </div>
-        <!-- /Page Content -->
-
-        <!-- Add Holiday Modal -->
+     
         <div class="modal custom-modal fade" id="add_holiday" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -108,9 +113,7 @@
                 </div>
             </div>
         </div>
-        <!-- /Add Holiday Modal -->
 
-        <!-- Edit Holiday Modal -->
         <div class="modal custom-modal fade" id="edit_holiday" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -196,3 +199,4 @@
     </script>
 @endsection
 @endsection
+

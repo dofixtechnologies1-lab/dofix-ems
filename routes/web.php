@@ -423,3 +423,5 @@ Route::controller(PartnerProfileController::class)->group(function () {
         });
     });
 });
+Route::post('/employee/status/toggle', [EmployeeProfileController::class, 'toggleStatus'])
+    ->name('employee.status.toggle');
