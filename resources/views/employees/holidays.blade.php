@@ -74,8 +74,8 @@
         </div>
     </td>
 </tr>
-@endif
-@endforeach
+            @endif
+            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -118,7 +118,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Holiday</h5>
+                        <h5 class="modal-title">Edit Partner</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -147,6 +147,7 @@
         </div>
         <!-- /Edit Holiday Modal -->
 
+        
         <!-- Delete Holiday Modal -->
         <div class="modal custom-modal fade" id="deleteRecord" role="dialog">
             <div class="modal-dialog modal-dialog-centered">
